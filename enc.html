@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enc Page</title>
+</head>
+
+<body>
+  <h1>Enc Page</h1>
+
+  <script>
+//go to https://www.devglan.com/online-tools/rsa-key-generator and generate 2048 or use openssl
+//openssl genrsa -out private.pem 2048
+const privateKey = `-----BEGIN RSA PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCL8uUQJr7hBS+w
+3mK/bg+DleGtuDEUXDYteyI4ufVUnfAHFwS821I2EIcacmkx8LfVsn4m9nI7q3rx
+PM06hdrNmmNDj1Wjr04bbfLe8vPb1SwDyfpngSK6Rf7j6wMEqwhtZ27FF28Clmyf
+24jjz/qeU0fCMnWzvQ5SeCTxmfQMhiBn+jixC/EWdWq7j/pPrGrOHMblYfuYHkZb
+sSdzuzXUuH4elv7L9YB7swNYtwFU1ViP3ebMkq7UMkUbAAH1izfQjJkivWNxqggE
+24c/u85ow5opixFhuidFCN7Ib1JzTr5mOZ1K5c2x5N9r189ARKpI9TSvkUmP1I0t
+9A7iq4cFAgMBAAECggEAB3ML92KgmXi9s6P6zKbOo5n4U9dwoV1RMvWRekSHxxPL
+IY17npPsGd2iW2mIqPRfzLu+FFPc+8kid7HdWMakQXp82y1HiTl9Jl+hZHW5PlPo
+DmGTdyv8Db9JFJe/ZuG1xqERV+Np8NDSAmZcsIezFvdm4/Lsqf8fwosLqGKiB4KO
+EoaoO7soPnOdL4Jb/dWvuRS8gPhvUj1KWSnu4ztgLBCZkBJ65LxdqQFJMm/qFvXF
+qKYtNTFSTzGsnJ0iAEkBqOoy8RUdk/7C/BprNgLsxPQNd/mXH5Yop3s9mL7o+M4P
+f+LGpOvO39lDp6bi5xxL2WvquFrHZ1CffzwYW7qW5wKBgQDA2JNzJQSxuiGR30N/
+ColgqHCEJNHucicGLtOnEEnwrT3ejsCJNFIhlHkhQf/dysMy2uiAq5In9AEwvHfo
+WWhccABVMOLPCUsFB7wEOuftOAloKe/vSV302M3ZPG9YKsNOR+rfrLb2Hpv7I4XV
+79THNkK8sTqohQc54VoBkYq/SwKBgQC5x6IoLul9/GNuXxDR/uU1m4fRwyweH7hR
+Ru6+M8wENrkQTcCX65IF5d9ZZQtrGRHYVEmLTrfXAolf7wG5vWDoOaDJaNd8Xcdm
+39AyhZHjCKw4rKQdka4KA71PJum58lDtuBBAhTxlfQoJwEzL2mJjJhZxqZ3dr+n+
+4aNKpGLQ7wKBgEUrqb/MUGG7RJ1A+sHPsrTj1e/gERi5AzxZgXtUAWF9kkqI45CT
+Hr6Ctevy82bHerp8AJdecv83q1Gi2FOT9jXpyoTEEyZ1y93TB2JxCo1w4xbkq/Yl
+V7kiJru7zKhQNluWui1ekwW2tvYeqLuy2ZxW3xs1arfVd2EQbqtPW/f/AoGBAJ79
+2aoYE92tXQ79LvD4+wJ427DKHnydWum8EeAXhhdpGdJ5KEUb5vlDNHVWA4KhjuMb
+p2Egejb5RcYjTs+94ix7/T3BiwE1ZMyG6LAEHck2B+Xs4fsoTNDnSGFwBQEM/vOi
+3c3J+NlGPIwB1fd0K1V9KCIYLjGmNlTamBvuOV9jAoGBAIjNm2zx0vMPcan2EHOf
+oLCILIN1TPn6Cbb6ZeO6ZMts5QG0QJSKBu7f4RBhGGge0ojGd1ES7w7HcIReqPPm
+BvOldv3mofheSu/svAqpVJlfQARe6weGExJSOQrAC0LU3GzGDrs3FvbaGAo7xjEg
+a0yKawG0JSoM2LNwzIrHBvH+
+-----END RSA PRIVATE KEY-----`;
+//openssl rsa -in private.pem -pubout -out public.pem
+const publicKey = `-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi/LlECa+4QUvsN5iv24P
+g5XhrbgxFFw2LXsiOLn1VJ3wBxcEvNtSNhCHGnJpMfC31bJ+JvZyO6t68TzNOoXa
+zZpjQ49Vo69OG23y3vLz29UsA8n6Z4EiukX+4+sDBKsIbWduxRdvApZsn9uI48/6
+nlNHwjJ1s70OUngk8Zn0DIYgZ/o4sQvxFnVqu4/6T6xqzhzG5WH7mB5GW7Enc7s1
+1Lh+Hpb+y/WAe7MDWLcBVNVYj93mzJKu1DJFGwAB9Ys30IyZIr1jcaoIBNuHP7vO
+aMOaKYsRYbonRQjeyG9Sc06+ZjmdSuXNseTfa9fPQESqSPU0r5FJj9SNLfQO4quH
+BQIDAQAB
+-----END PUBLIC KEY-----`;
+
+	
+
+	importPublicKeyAndEncrypt();
+	    
+	async function importPublicKeyAndEncrypt() {
+
+	    const plaintext = 'This text will be encoded UTF8 and may contain special characters like § and €.';
+			
+	    try {
+		const pub = await importPublicKey(publicKey);
+		const encrypted = await encryptRSA(pub, new TextEncoder().encode(plaintext));
+		const encryptedBase64 = window.btoa(ab2str(encrypted));
+		console.log(encryptedBase64.replace(/(.{64})/g, "$1\n")); 
+	    } catch(error) {
+		console.log(error);
+	    }
+	}
+
+	async function importPublicKey(spkiPem) {       
+	    return await window.crypto.subtle.importKey(
+		"spki",
+		getSpkiDer(spkiPem),
+		{
+		    name: "RSA-OAEP",
+		    hash: "SHA-256",
+		},
+		true,
+		["encrypt"]
+	    );
+	}
+
+	async function encryptRSA(key, plaintext) {
+	    let encrypted = await window.crypto.subtle.encrypt(
+		{
+		    name: "RSA-OAEP"
+		},
+		key,
+		plaintext
+	    );
+	    return encrypted;
+	}
+
+	function getSpkiDer(spkiPem){
+	    const pemHeader = "-----BEGIN PUBLIC KEY-----";
+	    const pemFooter = "-----END PUBLIC KEY-----";
+	    var pemContents = spkiPem.substring(pemHeader.length, spkiPem.length - pemFooter.length);
+	    var binaryDerString = window.atob(pemContents);
+	    return str2ab(binaryDerString); 
+	}
+
+	//
+	// Helper
+	//
+
+	// https://stackoverflow.com/a/11058858
+	function str2ab(str) {
+	    const buf = new ArrayBuffer(str.length);
+	    const bufView = new Uint8Array(buf);
+	    for (let i = 0, strLen = str.length; i < strLen; i++) {
+		bufView[i] = str.charCodeAt(i);
+	    }
+	    return buf;
+	}
+	    
+	function ab2str(buf) {
+	    return String.fromCharCode.apply(null, new Uint8Array(buf));
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	importPrivateKeyAndDecrypt();
+	    
+	async function importPrivateKeyAndDecrypt() {
+
+	    // A ciphertext produced with the first code
+	    const ciphertextB64 = `arbWndn0JE/IxwiY/7mJWXMxVTZxNTPD7sRHE2+LFZ8b8Q2FU8VxO+coMpwRgbw9
+OzCWMcZpHcnHWH1rzu3RaMLw4zLYAuhKbTgferetamKw9v/kJi5mUzgMdAonRtH5
+SyifjGIsv6uiLTfhy9FuB0m2hEYM5zsNAMI6Wdyw6vl5v94CL/6Mal/ZOVDeSyNN
+zxutIJL6f79mOzRdMzi0lLMXaqZPJmLiV8Filp/ZgK6KKJdO9kSRwLpfwewM6eS5
+jpaS0oGCgxOtJGhxNCPwwJkfNT8OOS87jEtC6yMX1XeLT/gQ/RWX+yvIg2U56RMK
+tYDiJr3E69R7cOWk6T3lgw==`;//.replace(/(?:\r\n|\r|\n)/g, '');;
+		
+	    try {
+		const priv = await importPrivateKey(privateKey);
+		const decrypted = await decryptRSA(priv, str2ab(window.atob(ciphertextB64)));
+		console.log(decrypted);
+	    } catch(error) {
+		console.log(error);
+	    }
+	}
+
+	async function importPrivateKey(pkcs8Pem) {     
+	    return await window.crypto.subtle.importKey(
+		"pkcs8",
+		getPkcs8Der(pkcs8Pem),
+		{
+		    name: "RSA-OAEP",
+		    hash: "SHA-256",
+		},
+		true,
+		["decrypt"]
+	    );
+	}
+
+	async function decryptRSA(key, ciphertext) {
+	    let decrypted = await window.crypto.subtle.decrypt(
+		{
+		    name: "RSA-OAEP"
+		},
+		key,
+		ciphertext
+	    );
+	    return new TextDecoder().decode(decrypted);
+	}
+
+	function getPkcs8Der(pkcs8Pem){
+	    const pemHeader = "-----BEGIN RSA PRIVATE KEY-----";
+	    const pemFooter = "-----END RSA PRIVATE KEY-----";
+	    var pemContents = pkcs8Pem.substring(pemHeader.length, pkcs8Pem.length - pemFooter.length);
+	    var binaryDerString = window.atob(pemContents);
+	    return str2ab(binaryDerString); 
+	}
+
+	//
+	// Helper
+	//
+	    
+	// https://stackoverflow.com/a/11058858
+	function str2ab(str) {
+	    const buf = new ArrayBuffer(str.length);
+	    const bufView = new Uint8Array(buf);
+	    for (let i = 0, strLen = str.length; i < strLen; i++) {
+		bufView[i] = str.charCodeAt(i);
+	    }
+	    return buf;
+	}
+	    
+	function ab2str(buf) {
+	    return String.fromCharCode.apply(null, new Uint8Array(buf));
+	}
+
+
+
+
+
+  </script>
+</body>
+
+</html>
